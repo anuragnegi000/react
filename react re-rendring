@@ -1,0 +1,42 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+
+
+
+
+
+function App() {
+  return (
+    <>
+      <div>
+        <HeaderWithButton/>
+       <Header title="anurag2"></Header>
+      </div>
+     
+    </>     
+  )
+}
+
+function HeaderWithButton(){
+   
+  const [word,setword]=useState("my name is anurag");
+  function change(){
+    setword("my name is "+Math.random());
+  }
+  return <div>
+     <button onClick={change}>Update the title</button>
+       <Header title={word}></Header>
+  </div>
+
+}
+
+function Header({title})
+{
+  return <div> 
+    {title}
+  </div>
+}
+export default App
+ 
