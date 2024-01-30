@@ -1,0 +1,23 @@
+function App(){
+  return <>
+  <CardWrapper innerComponent={<TextComponent/>}></CardWrapper>
+  </>
+}
+
+
+
+function CardWrapper({innerComponent }){
+    return <div style={{
+      border:"2px solid black",
+    }}>
+      {innerComponent}
+    </div>
+}
+function TextComponent(){
+  return <div>
+    hi there
+  </div>
+}
+
+
+export default App
