@@ -1,0 +1,43 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import { Dashboard } from './components/pages/Dashboard'
+import { Landing } from './components/pages/landing'
+
+function click(){
+  
+}
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+    <div>  
+     hi there this will remain permanent <br></br> 
+     </div>
+
+     <div>
+      <button onClick={()=>{
+        window.location.href="/"
+      }}>Landing Page</button>
+
+      <button onClick={()=>{
+        window.location.href="/dashboard"
+      }}>Dashboard page</button>
+     </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/dashboard" element={<Dashboard/>}></Route>
+      <Route path="/" element={<Landing/>}></Route>
+    </Routes>
+
+    
+      </BrowserRouter>
+    
+    </>
+  )
+}
+
+export default App
