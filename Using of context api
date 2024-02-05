@@ -1,0 +1,53 @@
+import { useContext, useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { useNavigate,BrowserRouter,Routes,Route } from 'react-router-dom'
+import { Dashboard } from './components/pages/Dashboard'
+import { Landing } from './components/pages/landing'
+import { CountContext } from './context'
+
+ 
+
+function App() {
+
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+    <CountContext.Provider value={count}>
+         <Count setCount={setCount}/>  
+    </CountContext.Provider>  
+    
+    </>
+  )
+}
+
+function Count({setCount}){
+  return <div>
+    
+   <CountRender></CountRender>
+  <Button setCount={setCount}></Button>
+  </div>
+}
+function CountRender(){
+  const count=useContext(CountContext);
+  return <div>
+    {count}
+  </div>
+}
+
+function Button({setCount}){
+  const count=useContext(CountContext);
+  return <div>
+    <button onClick={()=>{
+      setCount(count+1)
+    }}>Increase </button>
+  
+  <button onClick={()=>{
+      setCount(count-1)
+    }}>Decrease</button>
+  </div>
+}
+
+export default App
