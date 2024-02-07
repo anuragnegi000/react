@@ -1,0 +1,51 @@
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil'
+import { networkAtom, notificationsAtom,jobsAtom,messageAtom, totalNotificationSelector } from './atoms'
+import { useMemo } from 'react'
+function App() {
+ 
+
+  return <RecoilRoot>
+    <MainComp></MainComp>
+  </RecoilRoot>
+}
+
+function MainComp(){
+  const notificationCount=useRecoilValue(notificationsAtom);
+  const networkCount=useRecoilValue(networkAtom);
+  const jobsCount=useRecoilValue(jobsAtom);
+  const messageCount=useRecoilValue(messageAtom);
+  const totalNotificationCount=useRecoilValue(totalNotificationSelector);
+return <>
+    
+      <button>Home</button> 
+
+      <button>My network ({networkCount>=100?"99+":networkCount})</button>
+      <button>Jobs ({jobsCount})</button>
+      <button>Messaging ({messageCount})</button>
+      <button>Notifications ({notificationCount>=99?"99+":notificationCount})</button>
+      <Networkset></Networkset>
+      <button>Me({totalNotificationCount})</button>
+     
+    </>
+}
+
+function Networkset(){
+    const setNetwork=useSetRecoilState(networkAtom);
+    // const setJobs=useSetRecoilState(jobsAtom);
+// console.log("Yup")
+    return <div>
+     
+     <button onClick={()=>{
+      setNetwork(networkCount=>networkCount+1);
+     }}>
+         Click
+     </button>
+
+    </div>
+}
+
+export default App
